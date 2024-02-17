@@ -54,14 +54,14 @@
     </div>
 
     <div id="animatedTextContainer" class="hidden">
-        <input type="text" id="inputField" oninput="checkInput(this.value)" placeholder="oh hello love<3">
+        <input type="text" id="inputField" oninput="checkInput(this.value)" placeholder="oh its you hello love<3">
         <p id="animatedText" class="hidden"></p>
     </div>
     
     <div id="boxContainer" class="hidden">
         <div id="secretBox">
             <p>Is it really you?</p>
-            <input type="text" id="yesInput" oninput="checkYesInput(this.value)" placeholder="now say 'yeah'">
+            <input type="text" id="yesInput" oninput="checkYesInput(this.value)" placeholder="now say 'yeah whats up'">
         </div>
     </div>
 
@@ -100,22 +100,22 @@
         function checkYesInput(value) {
             const secretBox = document.getElementById('secretBox');
             const yesInput = document.getElementById('yesInput');
-            if (value.toLowerCase() === 'yeah') {
+            if (value.toLowerCase() === 'yeah whats up') {
                 secretBox.style.display = 'none';
                 yesInput.style.display = 'none';
-                animateText(); 
+                animateText();
             }
         }
 
         function animateText() {
             const animatedText = document.getElementById('animatedText');
-            const words = ['Hey love', 'How have you been?', 'I have too much', 'free time in my hands', 'and really nothing better to do', 'so', 'I changed it up a bit', 'I love talking to you', 'even though', 'I never have anything to say', 'and it is weird.', 'Most of the time', 'it feels like I bore you', 'and I know that it is true', 'Nova', 'Nova...', '  ', '  ', '  ', 'I', 'dont know', 'hey', 'something came to mind', 'have you seen that movie', 'or read that book', 'called',' "The little prince"', 'That is my favorite book', 'I had actually forgot', 'but I used to compare you', 'to the little girl', 'not because you were similar', 'but because I myself', 'believed that I was just like the prince', 'a kid', 'in some way.', 'If you know the story', 'the girl helps the prince', 'to relese the stars from that cage', 'the stars were the dreams', 'and also she helps him let go of the rose', 'which the prince loved deeply', 'now you', 'in some way', 'were the girl', 'I cannot really explain how', 'but I hope you understand', 'the girl', 'does not have a name', 'so I kinda just linked her to you', 'But sometimes you are like', 'the rose', '"It is the time', 'that you have wasted on your rose', 'that makes your rose', 'so important"', 'I cannot really explain', 'how you are the rose either', 'But you are', '. ', 'If you have never watched', 'The little prince', 'I suggest you do', 'it is a pretty movie', 'Anyway...', 'I do not know but you really just remind me someway of that book', 'Felt a need to say it', '  ', '  ', '  ', '  ', '  ', '  ', 'Jam tu vdek', 'Por gjithsesi', 'Të dua'];
+            const words = ['Nothing much', 'But this is pretty cool right?', 'I hope so', 'I spent too much time', 'for you not to like it', 'it is kind of plain', 'and just text but yea', 'anywayy...', 'How have you been?', 'You and your loved ones alright?', 'If yes I am glad', 'If no you can come and talk if you want', 'I made this simply because', 'it will be here forever', 'like fr', 'so whenever you feel bad', '(hopefully)', 'this makes you feel better', 'And yeah..', 'to me, it does not sound like a good idea', 'and sometimes it does', 'but really it does not matter what I think', 'But see it will go on nearly forever', '...', 'yeah no', 'that was a lie', 'it will not go on forever', 'it will continue as a loop', 'not very comforting', 'but this is all I can do yk?', 'I hope you stay to the very end', 'I am not going through what I have written', 'so I will be yapping', 'I uhh...', 'I forgot what I was saying earlier', 'oh yeah', 'so it will exist forever', 'Cool right?', '(I hope you think so T-T)', 'Hey nova', 'I also have this feeling that I need to share', 'I truly admire you', 'bro like literally everything about you', 'you are my muse', 'And have been for an awfully long time', 'I cant stop this', 'I will stop...sorry', 'wow', 'ohhh I have an idea', 'this came up just now', 'this will definitely be like "your zone"', 'so like you can always come back', 'and you are the only one that can access this', 'and me ofc', 'so I maybe', 'if I have the time', '(which I do have)', 'add new things once in a while', 'then whenever you check', 'there might be', 'something new..', 'I hope this isnt wasting your time', 'Now before I end this', 'I need to say 3 things:', '1. I love you', '2. I kiss you', '3. I miss you', 'like every second', 'mwah', 'mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah ', 'I hope that was enough kisses', 'And remember', 'As long as I live', '(even if I dont lmao)', 'there will always be one to love you', '  ', 'The end', 'from here on it will begin at the start again', 'byeee...', 'you can leave now', 'there is nothing after', '...', 'what are you doing?,', 'okay..', 'no seriously.', 'leave.', '    ', '   ', '     ', '     ', '       ', '     ', '   ', 'lmao I love you<3', ' ', ' ', 'Also...', 'BE MY VALENTINE', 'And that was not a question so', 'for the last time bye', 'dont forget to tell me what you think about this', 'and tell me if I can make it better', 'okay?', 'bye bye', '       ', ' ', ' ', ' ', ' ', ' ', ' '];
             let index = 0;
 
             setInterval(() => {
                 animatedText.innerHTML = words[index];
                 index = (index + 1) % words.length;
-            }, 3500);
+            }, 2500);
         }
     </script>
 </body>
