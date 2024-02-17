@@ -54,7 +54,7 @@
     </div>
 
     <div id="animatedTextContainer" class="hidden">
-        <input type="text" id="inputField" oninput="checkInput(this.value)" placeholder="oh its you hello love<3">
+        <input type="text" id="inputField" oninput="checkInput(this.value)" placeholder="oh hello love<3">
         <p id="animatedText" class="hidden"></p>
     </div>
     
@@ -89,7 +89,6 @@
                 animatedText.classList.remove('hidden');
                 boxContainer.classList.remove('hidden');
                 secretBox.style.display = 'block';
-                animateText();
             } else {
                 document.getElementById('inputField').style.display = 'block';
                 animatedText.classList.add('hidden');
@@ -104,7 +103,7 @@
             if (value.toLowerCase() === 'yeah') {
                 secretBox.style.display = 'none';
                 yesInput.style.display = 'none';
-                animateText();
+                animateText(); 
             }
         }
 
@@ -116,9 +115,8 @@
             setInterval(() => {
                 animatedText.innerHTML = words[index];
                 index = (index + 1) % words.length;
-            }, 1798);
+            }, 4000);
         }
     </script>
 </body>
 </html>
-
