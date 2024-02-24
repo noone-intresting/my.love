@@ -50,7 +50,6 @@
             margin: 10px;
             padding: 10px;
             cursor: pointer;
-            display: none;
         }
 
         @keyframes fadeIn {
@@ -130,6 +129,8 @@
             if (value.toLowerCase() === 'yeah') {
                 secretBox.style.display = 'none';
                 buttonsContainer.classList.remove('hidden');
+            } else {
+                buttonsContainer.classList.add('hidden');
             }
         }
 
