@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Animation</title>
+    <title>I am everywhere🙄</title>
     <style>
         body {
             display: flex;
@@ -21,7 +21,8 @@
         #buttonsContainer {
             text-align: center;
         }
-        #inputField {
+        #inputField,
+        #yesInput {
             font-size: 16px;
             padding: 10px;
             margin-bottom: 10px;
@@ -31,7 +32,8 @@
             opacity: 0;
             animation: fadeIn 1s forwards;
         }
-        #secretBox {
+        #secretBox,
+        #buttonsContainer {
             display: none;
             border: 2px solid purple;
             padding: 20px;
@@ -68,7 +70,7 @@
     <div id="boxContainer" class="hidden">
         <div id="secretBox">
             <p>Is it really you?</p>
-            <input type="text" id="yesInput" oninput="checkYesInput(this.value)" placeholder="now say 'yeah whats up'">
+            <input type="text" id="yesInput" oninput="checkYesInput(this.value)" placeholder="now say 'yeah'">
         </div>
     </div>
 
@@ -97,12 +99,11 @@
             const secretBox = document.getElementById('secretBox');
             const buttonsContainer = document.getElementById('buttonsContainer');
 
-            if (value.toLowerCase() === 'hello') {
+            if (value.toLowerCase() === 'yeah') {
                 document.getElementById('inputField').style.display = 'none';
                 animatedText.classList.remove('hidden');
                 boxContainer.classList.remove('hidden');
                 secretBox.style.display = 'block';
-                buttonsContainer.classList.remove('hidden');
             } else {
                 document.getElementById('inputField').style.display = 'block';
                 animatedText.classList.add('hidden');
@@ -114,12 +115,10 @@
 
         function checkYesInput(value) {
             const secretBox = document.getElementById('secretBox');
-            const yesInput = document.getElementById('yesInput');
             const buttonsContainer = document.getElementById('buttonsContainer');
             
-            if (value.toLowerCase() === 'yeah whats up') {
+            if (value.toLowerCase() === 'yeah') {
                 secretBox.style.display = 'none';
-                yesInput.style.display = 'none';
                 buttonsContainer.classList.remove('hidden');
             }
         }
@@ -142,6 +141,8 @@
 
         function animateNew() {
             const animatedText = document.getElementById('animatedText');
+            const newBtn = document.getElementById('newBtn');
+            const originalBtn = document.getElementById('originalBtn');
             const newWords = ['Hey love', 'How have you been?', 'I have too much', 'free time to spend', 'and really nothing better to do', 'so', 'yeah', 'I love talking to you', 'even though', 'I never have anything to say', 'and it is weird.', 'Most times', 'it feels like I bore you', 'and I know that it is true', 'Nova', 'Nova…', '  ', '  ', '  ', 'I', 'dont know', 'ha ha', 'something came to mind', 'have you seen that movie', 'or read that book', 'called “The little prince”', 'That is my favourite book', 'I had actually forgot', 'but I used to compare you', 'to the little girl', 'not because you were similar', 'but because I myself', 'believed that I was just like the prince', 'a kid', 'in some way.', 'If you know the story', 'the girl helps the prince', 'to release the stars', 'the stars were the dreams', 'and also she helps him forget the rose', 'to let the rose go’which the prince loved deeply', 'you', 'in some way', 'were the girl', 'I cannot really explain how', 'but I hope you understand', 'the girl', 'does not have a name', 'so I kinda just linked her to you', 'But sometimes you are like', 'the rose', '"It is the time', 'that you have wasted on your rose', 'that makes your rose', 'so important"', 'I cannot really explain', 'how you are the rose either', 'But you are', '. ', 'If you have never watched', 'The little prince', 'I suggest you do', 'it is a pretty movie', 'Anyway…', 'I do not know but you really just remind me someway of that book', 'Felt a need to say it', '  ', '  ', '  ', '  ', '  ', '  ', 'Jam tu vdek', 'Por gjithsesi', 'Të dua'];
             let index = 0;
 
