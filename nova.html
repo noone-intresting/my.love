@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,23 +16,27 @@
             background-color: white;
             color: purple;
         }
+
         #password-container,
         #animatedTextContainer,
         #boxContainer,
         #buttonsContainer {
             text-align: center;
         }
+
         #inputField,
         #yesInput {
             font-size: 16px;
             padding: 10px;
             margin-bottom: 10px;
         }
+
         #animatedText {
             font-size: 20px;
             opacity: 0;
             animation: fadeIn 1s forwards;
         }
+
         #secretBox,
         #buttonsContainer {
             display: none;
@@ -39,22 +44,27 @@
             padding: 20px;
             margin-top: 20px;
         }
+
         #originalBtn,
         #newBtn {
             margin: 10px;
             padding: 10px;
             cursor: pointer;
+            display: none;
         }
+
         @keyframes fadeIn {
             to {
                 opacity: 1;
             }
         }
+
         .hidden {
             display: none;
         }
     </style>
 </head>
+
 <body>
     <div id="password-container">
         <label for="password-input">Enter Password:</label>
@@ -66,7 +76,7 @@
         <input type="text" id="inputField" oninput="checkInput(this.value)" placeholder="oh its you hello love<3">
         <p id="animatedText" class="hidden"></p>
     </div>
-    
+
     <div id="boxContainer" class="hidden">
         <div id="secretBox">
             <p>Is it really you?</p>
@@ -116,7 +126,7 @@
         function checkYesInput(value) {
             const secretBox = document.getElementById('secretBox');
             const buttonsContainer = document.getElementById('buttonsContainer');
-            
+
             if (value.toLowerCase() === 'yeah') {
                 secretBox.style.display = 'none';
                 buttonsContainer.classList.remove('hidden');
@@ -143,7 +153,7 @@
             const animatedText = document.getElementById('animatedText');
             const newBtn = document.getElementById('newBtn');
             const originalBtn = document.getElementById('originalBtn');
-            const newWords = ['Hey love', 'How have you been?', 'I have too much', 'free time on my hands', 'and we hanve not been in touch', 'so', 'I did thus', 'Hoping you came again','And i am like waring you','that you need to come back bro okay✋?','I love talking to you', 'even though', 'I never have anything to say', 'and it is weird.', 'Most times', 'it feels like I bore you', 'and I know that it is true', '     ', 'Nova…', '  ', '  ', '  ', 'I', 'dont know', 'omg ha ha', 'something came to mind', 'have you seen that movie', 'or read that book', 'called “The little prince”', 'That is my favourite book', 'I had actually forgot', 'but I used to compare you', 'to the little girl', 'not because you were similar', 'but because I myself', 'believed that I was just like the prince', '(when I was 5 I was blond too and thats all he convincing I needed)', 'in some way.', 'If you know the story', 'the girl helps the prince', 'to release the stars', ' ', 'and also she helps him forget the rose', 'to let the rose go' ,'the prince loved deeply', 'you', 'in some way', 'were the girl', 'I cannot really explain how', '(and maybe you are not like her but thats what I thought)', 'the girl', 'does not have a name', 'so I kinda just linked her to you', 'But sometimes you are like', 'the rose too', '"It is the time', 'that you have wasted on your rose', 'that makes your rose', 'so important"', 'I cant really explain', 'how you are the rose either', 'But you are', '. ', 'If you have never watched', 'The little prince', 'I suggest you do', 'it is a pretty movie', 'Anyway…', 'I dont know but you really just reminded me of that book', '  ' ,'Also this will not loop', ' So you can leave now', 'byeee  ', '  ', '  ', '  ','  ', '  ', '  ','  ', '  ','Jam tu vdek', 'Por gjithsesi', 'Të dua'];
+            const newWords = ['Hey love', 'How have you been?', 'I have too much', 'free time on my hands', 'and we hanve not been in touch', 'so', 'I did thus', 'Hoping you came again', 'And i am like waring you', 'that you need to come back bro okay✋?', 'I love talking to you', 'even though', 'I never have anything to say', 'and it is weird.', 'Most times', 'it feels like I bore you', 'and I know that it is true', '     ', 'Nova…', '  ', '  ', '  ', 'I', 'dont know', 'omg ha ha', 'something came to mind', 'have you seen that movie', 'or read that book', 'called “The little prince”', 'That is my favourite book', 'I had actually forgot', 'but I used to compare you', 'to the little girl', 'not because you were similar', 'but because I myself', 'believed that I was just like the prince', '(when I was 5 I was blond too and thats all he convincing I needed)', 'in some way.', 'If you know the story', 'the girl helps the prince', 'to release the stars', ' ', 'and also she helps him forget the rose', 'to let the rose go', 'the prince loved deeply', 'you', 'in some way', 'were the girl', 'I cannot really explain how', '(and maybe you are not like her but thats what I thought)', 'the girl', 'does not have a name', 'so I kinda just linked her to you', 'But sometimes you are like', 'the rose too', '"It is the time', 'that you have wasted on your rose', 'that makes your rose', 'so important"', 'I cant really explain', 'how you are the rose either', 'But you are', '. ', 'If you have never watched', 'The little prince', 'I suggest you do', 'it is a pretty movie', 'Anyway…', 'I dont know but you really just reminded me of that book', '  ', 'Also this will not loop', ' So you can leave now', 'byeee  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', 'Jam tu vdek', 'Por gjithsesi', 'Të dua'];
             let index = 0;
 
             newBtn.style.display = 'none';
@@ -156,4 +166,5 @@
         }
     </script>
 </body>
+
 </html>
