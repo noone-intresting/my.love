@@ -26,8 +26,7 @@
             text-align: center;
         }
 
-        #inputField,
-        #express-input {
+        #inputField {
             font-size: 16px;
             padding: 10px;
             margin-bottom: 10px;
@@ -40,18 +39,22 @@
         }
 
         #secretBox,
-        #expressBox,
-        #expressData {
+        #expressBox {
             display: none;
             border: 2px solid purple;
             padding: 20px;
             margin-top: 20px;
         }
 
+        #expressData {
+            margin-top: 20px;
+        }
+
         #originalBtn,
         #newBtn,
         #saySomethingBtn,
-        #submitExpressBtn {
+        #submitExpressBtn,
+        #submitDataBtn {
             margin: 10px;
             padding: 10px;
             cursor: pointer;
@@ -101,7 +104,10 @@
         <button id="submitExpressBtn" onclick="submitExpress()">Submit</button>
     </div>
 
-    <div id="expressData"></div>
+    <div id="expressData" class="hidden">
+        <p id="expressDataText"></p>
+        <button id="submitDataBtn" onclick="showButtons()">Back to buttons</button>
+    </div>
 
     <script>
         function checkPassword() {
@@ -166,13 +172,13 @@
         }
 
         function submitExpress() {
+            const expressData = document.getElementById('expressDataText');
             const expressInput = document.getElementById('express-input').value;
-            const expressDataContainer = document.getElementById('expressData');
 
-            expressDataContainer.innerHTML = `<p>Expressed: ${expressInput}</p>`;
-            expressDataContainer.style.display = 'block';
-
-            document.getElementById('express-input').value = '';
+            expressData.innerHTML = expressInput;
+            document.getElementById('expressBox').style.display = 'none';
+            document.getElementById('expressData').style.display = 'block';
+            document.getElementById('submitDataBtn').style.display = 'inline-block';
         }
 
         function animateOriginal() {
