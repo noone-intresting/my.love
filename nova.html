@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,28 +16,41 @@
             background-color: white;
             color: purple;
         }
+
         #password-container,
         #animatedTextContainer,
         #boxContainer,
+        #expressBoxContainer,
         #buttonsContainer {
             text-align: center;
         }
+
         #inputField {
             font-size: 16px;
             padding: 10px;
             margin-bottom: 10px;
         }
+
         #animatedText {
             font-size: 20px;
             opacity: 0;
             animation: fadeIn 1s forwards;
         }
+
         #secretBox {
             display: none;
             border: 2px solid purple;
             padding: 20px;
             margin-top: 20px;
         }
+
+        #expressBox {
+            display: none;
+            border: 2px solid purple;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
         #originalBtn,
         #newBtn,
         #expressBtn {
@@ -45,36 +59,49 @@
             cursor: pointer;
             display: none;
         }
+
         @keyframes fadeIn {
             to {
                 opacity: 1;
             }
         }
+
         .hidden {
             display: none;
         }
     </style>
 </head>
+
 <body>
     <div id="password-container">
         <label for="password-input">Enter Password:</label>
         <input type="password" id="password-input" placeholder="Password">
         <button onclick="checkPassword()">Submit</button>
     </div>
+
     <div id="animatedTextContainer" class="hidden">
         <input type="text" id="inputField" oninput="checkInput(this.value)" placeholder="oh its you hello love<3">
         <p id="animatedText" class="hidden"></p>
     </div>
+
     <div id="boxContainer" class="hidden">
         <div id="secretBox">
             <p>Is it really you?</p>
             <input type="text" id="yesInput" oninput="checkYesInput(this.value)" placeholder="now say 'yeah whats up'">
         </div>
     </div>
+
+    <div id="expressBoxContainer" class="hidden">
+        <div id="expressBox">
+            <p>Data collected:</p>
+            <p id="expressData"></p>
+        </div>
+    </div>
+
     <div id="buttonsContainer" class="hidden">
         <button id="originalBtn" onclick="animateOriginal()">Original message</button>
         <button id="newBtn" onclick="animateNew()">New message</button>
-        <button id="expressBtn" onclick="express()">I want to say something</button>
+        <button id="expressBtn" onclick="showExpressBox()">Express box</button>
     </div>
 
     <script>
@@ -95,6 +122,9 @@
             const animatedText = document.getElementById('animatedText');
             const boxContainer = document.getElementById('boxContainer');
             const secretBox = document.getElementById('secretBox');
+            const expressBoxContainer = document.getElementById('expressBoxContainer');
+            const expressBox = document.getElementById('expressBox');
+            const expressBtn = document.getElementById('expressBtn');
             const buttonsContainer = document.getElementById('buttonsContainer');
 
             if (value.toLowerCase() === 'hello') {
@@ -102,6 +132,12 @@
                 animatedText.classList.remove('hidden');
                 boxContainer.classList.remove('hidden');
                 secretBox.style.display = 'block';
+            } else if (value.toLowerCase() === 'show me') {
+                document.getElementById('inputField').style.display = 'none';
+                boxContainer.style.display = 'none';
+                expressBoxContainer.classList.remove('hidden');
+                expressBox.style.display = 'block';
+                expressBtn.style.display = 'inline-block';
             } else {
                 document.getElementById('inputField').style.display = 'block';
                 animatedText.classList.add('hidden');
@@ -123,26 +159,19 @@
             }
         }
 
+        function showExpressBox() {
+            const expressBoxContainer = document.getElementById('expressBoxContainer');
+            const expressBox = document.getElementById('expressBox');
+            const expressData = document.getElementById('expressData');
+            expressData.innerText = 'Data collected: ' + document.getElementById('inputField').value;
+            expressBoxContainer.style.display = 'block';
+        }
+
         function showButtons() {
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
-            const expressBtn = document.getElementById('expressBtn');
             originalBtn.style.display = 'inline-block';
             newBtn.style.display = 'inline-block';
-            expressBtn.style.display = 'inline-block';
-        }
-
-        function express() {
-            const expressBox = prompt('What do you want to express?');
-            const triggerWord = 'open';
-
-            if (expressBox.toLowerCase().includes(triggerWord)) {
-                alert('Express box is now open!');
-                document.getElementById('animatedTextContainer').classList.remove('hidden');
-                document.getElementById('inputField').focus();
-            } else {
-                alert('Express box remains closed.');
-            }
         }
 
         function animateOriginal() {
@@ -168,12 +197,16 @@
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
             const expressBtn = document.getElementById('expressBtn');
+            const expressBoxContainer = document.getElementById('expressBoxContainer');
+            const expressBox = document.getElementById('expressBox');
+            const expressData = document.getElementById('expressData');
             const newWords = ['Hellooo', 'Welcome back to ', 'The looped message  ', '  How have you been?', 'AND','more importantly','Where have you been woman??','I have too much', 'free time on my hands', 'and we have not been in touch', 'so', 'I did this ', 'Hoping you came again ofc', '(And I am like waring you that you need to come back bro okay✋?)','(I am dying of boredommmm)','(you are a rutine for me okay???)' ,'(so text me)','(or I will- yeah yk...)','(SLAM YOU ON YOUR NECK)','I love talking to you', 'even though', 'I never have anything to say', 'and it is weird.', 'Most times', 'it feels like I bore you', 'and I know that it is true', '     ', 'Nova…', '  ', '  ', '  ', 'omg ha ha', 'something came to mind', 'have you seen that movie', 'or read that book', 'called “The little prince”', 'That is my favourite book', 'I had actually forgot', 'but I used to compare you', 'to the little girl', 'not because you were similar', 'but because I myself', 'believed that I was just like the little prince', 'in a lot of ways.', 'If you know the story', 'the girl helps the prince', 'to release the stars', ' ', 'and also she helps him get back to his rose', 'even though he had forgot and abandoned her.', 'The thing is that the prince did not know how to love his rose', 'and then he figured how to let her go','The girl gave him courage.','You', 'in some way', 'were and still are my girl', 'I can not really explain how', '(and you kinda are.)', 'The girl', 'does not have a name', 'so I kinda just linked her to you.', 'But sometimes you are like', 'the rose too', '"It is the time', 'that you have devoted to your rose', 'that makes your rose', 'so important"', 'I cant really explain...', 'how you are the rose either', 'But you are.' ,'If you have never watched', 'The little prince', 'I suggest you do', 'it is a pretty movie', 'Anyway…', 'I dont know but you really just reminded me of that book', '  ', 'Also it will not loop', 'And I am done on this weeks update', 'I did not want to change the part where', 'the first message had to go', 'so I decided to keep it.', 'Also I am working on the flower still  ', 'fun fact they are called', '"Lule Dëshira"', 'which translates to', 'Flowers of desire or Wish flower', 'and as a kid I would blow on them','and if you could blow all the seeds away','your wish would come true bla bla bla...','Thats what that line','"Wishing on everyone that you would be mineeeeee"','in that song Dandelions refers to','yk cuz they are like "Flowers of desire"','Did you know that?','So if I did find them', 'on the phase when they were still yellow ','I would take them home together with their root ','And I would plant them in my garden', '...if they were alive by the time I went home', '(they never were)','I just really loved them', '  ', 'Thats all I guess ', 'Until next week ', 'I will do this every week', 'You can text me to let me know you see this ', 'anyway', 'Stay tuned  ', '02/25/2024  ', '  ', '  ', '  ', '  ', '  ', '  ','  ', '  ', '  ', '  ', '  ', 'lmao  ', 'Someone learned their lesson  ', '  ', '  ', '  ', 'I didnt want to tell you this but..  ', 'SPOILER ALERT', 'I might die',' If my psoriases does not get better immediately','Like immediately','But I think I will make it','Love you deeply💜','-Aron Ledian Zili'];
             let index = 0;
 
             originalBtn.style.display = 'none';
             newBtn.style.display = 'none';
             expressBtn.style.display = 'none';
+            expressBoxContainer.style.display = 'none';
 
             setInterval(() => {
                 animatedText.innerHTML = newWords[index];
@@ -182,4 +215,5 @@
         }
     </script>
 </body>
+
 </html>
