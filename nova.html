@@ -161,12 +161,15 @@
         }
 
         function submitExpress() {
-            const expressBox = document.getElementById('expressBox');
-            const submitExpressBtn = document.getElementById('submitExpressBtn');
-            const expressInput = document.getElementById('express-input');
-            expressBox.style.display = 'none';
-            submitExpressBtn.style.display = 'none';
-            alert('Thank you for letting me know: ' + expressInput.value);
+            const expressBox = prompt('What do you wanna say?');
+            const triggerWord = 'open';
+
+            if (expressBox.toLowerCase().includes(triggerWord)) {
+                alert('Express box is now open!');
+                document.getElementById('animatedTextContainer').classList.remove('hidden');
+                document.getElementById('inputField').focus();
+            } else {
+                alert('Thank you Nova.');
         }
 
         function animateOriginal() {
