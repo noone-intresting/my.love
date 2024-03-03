@@ -21,11 +21,13 @@
         #animatedTextContainer,
         #boxContainer,
         #buttonsContainer,
-        #expressBox {
+        #expressBox,
+        #expressData {
             text-align: center;
         }
 
-        #inputField {
+        #inputField,
+        #express-input {
             font-size: 16px;
             padding: 10px;
             margin-bottom: 10px;
@@ -38,7 +40,8 @@
         }
 
         #secretBox,
-        #expressBox {
+        #expressBox,
+        #expressData {
             display: none;
             border: 2px solid purple;
             padding: 20px;
@@ -97,6 +100,8 @@
         <input type="text" id="express-input" placeholder="Type your message">
         <button id="submitExpressBtn" onclick="submitExpress()">Submit</button>
     </div>
+
+    <div id="expressData"></div>
 
     <script>
         function checkPassword() {
@@ -161,15 +166,13 @@
         }
 
         function submitExpress() {
-            const expressBox = prompt('What do you wanna say?');
-            const triggerWord = 'open';
+            const expressInput = document.getElementById('express-input').value;
+            const expressDataContainer = document.getElementById('expressData');
 
-            if (expressBox.toLowerCase().includes(triggerWord)) {
-                alert('Express box is now open!');
-                document.getElementById('animatedTextContainer').classList.remove('hidden');
-                document.getElementById('inputField').focus();
-            } else {
-                alert('Thank you Nova.');
+            expressDataContainer.innerHTML = `<p>Expressed: ${expressInput}</p>`;
+            expressDataContainer.style.display = 'block';
+
+            document.getElementById('express-input').value = '';
         }
 
         function animateOriginal() {
@@ -207,3 +210,4 @@
 </body>
 
 </html>
+
