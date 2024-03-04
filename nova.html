@@ -22,17 +22,18 @@
         #boxContainer,
         #buttonsContainer,
         #expressionBox,
-        #dataBox {
+        #showDataBox {
             text-align: center;
             margin: 10px;
         }
 
         #inputField,
-        #expression-input {
+        #expression-input,
+        #showData-input {
             font-size: 15px;
             padding: 10px;
             margin-bottom: 10px;
-            width: 200px;
+            width: 200px; 
         }
 
         #animatedText {
@@ -43,12 +44,12 @@
 
         #secretBox,
         #thankYouMessage,
-        #dataBox {
+        #showDataMessage {
             display: none;
             border: 3px solid purple;
-            padding: 13px;
+            padding: 13px; 
             margin-top: 20px;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 1s ease-in-out; 
         }
 
         #originalBtn,
@@ -61,7 +62,8 @@
             display: none;
         }
 
-        #thankYouMessage {
+        #thankYouMessage,
+        #showDataMessage {
             color: green;
             font-size: 16px;
         }
@@ -97,13 +99,9 @@
         </div>
     </div>
 
-    <div id="expressionBox" class="hidden">
+    <div id="expressionBox" class="hidden">   
         <input type="text" id="expression-input" placeholder="well...">
         <button onclick="submitExpression()">I am done</button>
-    </div>
-
-    <div id="dataBox" class="hidden">
-        <p id="collectedData"></p>
     </div>
 
     <div id="thankYouMessage">Thank you for letting me know!</div>
@@ -112,10 +110,17 @@
         <button id="originalBtn" onclick="animateOriginal()">Original message</button>
         <button id="newBtn" onclick="animateNew()">New message</button>
         <button id="expressBtn" onclick="showExpressionBox()">I want to say something</button>
-        <button id="showDataBtn" onclick="showData()">Show me</button>
+        <button id="showDataBtn" onclick="showDataBox()">Show me</button>
+    </div>
+
+    <div id="showDataBox" class="hidden">
+        <input type="text" id="showData-input" placeholder="Type 'show me'">
+        <div id="showDataMessage"></div>
     </div>
 
     <script>
+        let expressionDataHistory = []; // Array to store submitted words
+
         function checkPassword() {
             const password = 'muffin';
             const enteredPassword = document.getElementById('password-input').value;
@@ -165,10 +170,12 @@
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
             const expressBtn = document.getElementById('expressBtn');
+            const showDataBtn = document.getElementById('showDataBtn');
 
             originalBtn.style.display = 'inline-block';
             newBtn.style.display = 'inline-block';
             expressBtn.style.display = 'inline-block';
+            showDataBtn.style.display = 'inline-block';
         }
 
         function animateOriginal() {
@@ -176,6 +183,7 @@
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
             const expressBtn = document.getElementById('expressBtn');
+            const showDataBtn = document.getElementById('showDataBtn');
             const words = ['Nothing much', 'But this is pretty cool right?', 'I hope so', 'I spent too much time', 'for you not to like it', 'it is kind of plain', 'and just text but yea', 'anywayy...', 'How have you been?',
                 'You and your loved ones alright?', 'If yes I am glad', 'If no you can come and talk if you want', 'I made this simply because', 'it will be here forever', 'like fr', 'so whenever you feel bad', '(hopefully)',
                 'this makes you feel better', 'And yeah..', 'to me, it does not sound like a good idea', 'and sometimes it does', 'but really it does not matter what I think', 'But see it will go on nearly forever', '...',
@@ -194,6 +202,7 @@
             originalBtn.style.display = 'none';
             newBtn.style.display = 'none';
             expressBtn.style.display = 'none';
+            showDataBtn.style.display = 'none';
 
             setInterval(() => {
                 animatedText.innerHTML = words[index];
@@ -206,6 +215,7 @@
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
             const expressBtn = document.getElementById('expressBtn');
+            const showDataBtn = document.getElementById('showDataBtn');
             const words = [
                 'Hellooo', 'Welcome back to ', 'The looped message  ', '  How have you been?', 'AND', 'more importantly', 'Where have you been woman??', 'I have too much', 'free time on my hands',
                 'and we have not been in touch', 'so', 'I did this ', 'Hoping you came again ofc', '(And I am like waring you that you need to come back bro okay✋?)', '(I am dying of boredommmm)',
@@ -230,6 +240,7 @@
             originalBtn.style.display = 'none';
             newBtn.style.display = 'none';
             expressBtn.style.display = 'none';
+            showDataBtn.style.display = 'none';
 
             setInterval(() => {
                 animatedText.innerHTML = words[index];
@@ -242,15 +253,21 @@
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
             const expressBtn = document.getElementById('expressBtn');
+            const showDataBtn = document.getElementById('showDataBtn');
             const thankYouMessage = document.getElementById('thankYouMessage');
+            const showDataBox = document.getElementById('showDataBox');
 
             originalBtn.style.display = 'none';
             newBtn.style.display = 'none';
             expressBtn.style.display = 'none';
+            showDataBtn.style.display = 'none';
             expressionBox.style.display = 'block';
 
-            // Hide the thank you message if it was previously displayed
+            
             thankYouMessage.style.display = 'none';
+
+            
+            showDataBox.style.display = 'none';
         }
 
         function submitExpression() {
@@ -258,52 +275,56 @@
             const expressionInput = document.getElementById('expression-input');
             const expressBtn = document.getElementById('expressBtn');
 
-            // Get the data from the expression box input
+            
             const expressionData = expressionInput.value;
 
-            // Hide the expression box
+            
+            expressionDataHistory.push(expressionData);
+
+            
             expressionBox.style.display = 'none';
 
-            // Display the thank you message as an alert
-            alert('Thank you for letting me know!');
+            
+            alert('Thank you for letting me know love!');
 
-            // Reset to buttons after submitting
+            
             resetToButtons();
         }
 
-        function showData() {
-            const dataBox = document.getElementById('dataBox');
-            const collectedData = document.getElementById('collectedData');
-            const expressionInput = document.getElementById('expression-input');
+        function showDataBox() {
+            const showDataBox = document.getElementById('showDataBox');
+            const originalBtn = document.getElementById('originalBtn');
+            const newBtn = document.getElementById('newBtn');
+            const expressBtn = document.getElementById('expressBtn');
+            const showDataBtn = document.getElementById('showDataBtn');
+            const showDataMessage = document.getElementById('showDataMessage');
 
-            // Get the data from the expression box input
-            const expressionData = expressionInput.value;
+            originalBtn.style.display = 'none';
+            newBtn.style.display = 'none';
+            expressBtn.style.display = 'none';
+            showDataBtn.style.display = 'none';
+            showDataBox.style.display = 'block';
 
-            // Display the collected data
-            collectedData.innerText = expressionData;
-
-            // Show the data box
-            dataBox.style.display = 'block';
+            showDataMessage.innerHTML = expressionDataHistory.join(', ');
         }
 
         function resetToButtons() {
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
             const expressBtn = document.getElementById('expressBtn');
+            const showDataBtn = document.getElementById('showDataBtn');
             const expressionBox = document.getElementById('expressionBox');
             const expressionInput = document.getElementById('expression-input');
-            const dataBox = document.getElementById('dataBox');
 
-            // Show the three buttons after submitting or displaying data
+            
             originalBtn.style.display = 'inline-block';
             newBtn.style.display = 'inline-block';
             expressBtn.style.display = 'inline-block';
+            showDataBtn.style.display = 'inline-block';
 
-            // Hide the expression box and data box after submitting
+            
             expressionBox.style.display = 'none';
-            dataBox.style.display = 'none';
 
-            // Clear the input field in the expression box
             expressionInput.value = '';
         }
     </script>
