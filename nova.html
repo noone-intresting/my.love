@@ -21,13 +21,15 @@
         #animatedTextContainer,
         #boxContainer,
         #buttonsContainer,
-        #expressionBox {
+        #expressionBox,
+        #expressionHistoryBox {
             text-align: center;
             margin: 10px;
         }
 
         #inputField,
-        #expression-input {
+        #expression-input,
+        #expression-history {
             font-size: 15px;
             padding: 10px;
             margin-bottom: 10px;
@@ -42,18 +44,17 @@
 
         #secretBox,
         #thankYouMessage,
-        #expressHistoryBox { /* Added expressHistoryBox */
+        #expressionHistoryBox {
             display: none;
             border: 3px solid purple;
-            padding: 13px;
+            padding: 13px; 
             margin-top: 20px;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 1s ease-in-out; 
         }
 
         #originalBtn,
         #newBtn,
-        #expressBtn,
-        #expressHistoryBtn { /* Added expressHistoryBtn */
+        #expressBtn {
             margin: 10px;
             padding: 10px;
             cursor: pointer;
@@ -63,6 +64,16 @@
         #thankYouMessage {
             color: green;
             font-size: 16px;
+        }
+
+        #expressionHistoryBox {
+            display: none;
+        }
+
+        #expression-history {
+            width: 300px;
+            height: 100px;
+            margin-top: 10px;
         }
 
         @keyframes fadeIn {
@@ -97,13 +108,8 @@
     </div>
 
     <div id="expressionBox" class="hidden">
-        <input type="text" id="expression-input" placeholder="well...">
+        <input type="text" id="expression-input" placeholder="well..." oninput="showExpressionHistory()">
         <button onclick="submitExpression()">I am done</button>
-    </div>
-
-    <div id="expressHistoryBox" class="hidden"> <!-- Added expressHistoryBox -->
-        <p>Expression History:</p>
-        <textarea id="expression-history" rows="5" readonly></textarea>
     </div>
 
     <div id="thankYouMessage">Thank you for letting me know!</div>
@@ -112,7 +118,10 @@
         <button id="originalBtn" onclick="animateOriginal()">Original message</button>
         <button id="newBtn" onclick="animateNew()">New message</button>
         <button id="expressBtn" onclick="showExpressionBox()">I want to say something</button>
-        <button id="expressHistoryBtn" onclick="showExpressionHistory()">Show Me</button>
+    </div>
+
+    <div id="expressionHistoryBox">
+        <textarea id="expression-history" readonly></textarea>
     </div>
 
     <script>
@@ -167,11 +176,10 @@
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
             const expressBtn = document.getElementById('expressBtn');
-            const expressHistoryBtn = document.getElementById('expressHistoryBtn');
+
             originalBtn.style.display = 'inline-block';
             newBtn.style.display = 'inline-block';
             expressBtn.style.display = 'inline-block';
-            expressHistoryBtn.style.display = 'inline-block'; // Display expressHistoryBtn
         }
 
         function animateOriginal() {
@@ -179,7 +187,6 @@
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
             const expressBtn = document.getElementById('expressBtn');
-            const expressHistoryBtn = document.getElementById('expressHistoryBtn');
             const words = ['Nothing much', 'But this is pretty cool right?', 'I hope so', 'I spent too much time', 'for you not to like it', 'it is kind of plain', 'and just text but yea', 'anywayy...', 'How have you been?',
                 'You and your loved ones alright?', 'If yes I am glad', 'If no you can come and talk if you want', 'I made this simply because', 'it will be here forever', 'like fr', 'so whenever you feel bad', '(hopefully)',
                 'this makes you feel better', 'And yeah..', 'to me, it does not sound like a good idea', 'and sometimes it does', 'but really it does not matter what I think', 'But see it will go on nearly forever', '...',
@@ -188,7 +195,7 @@
                 'I truly admire you', 'bro like literally everything about you', 'you are my muse', 'And have been for an awfully long time', 'I cant stop this', 'I will stop...sorry', 'wow', 'ohhh I have an idea',
                 'this came up just now', 'this will definitely be like "your zone"', 'so like you can always come back', 'and you are the only one that can access this', 'and me ofc', 'so I maybe', 'if I have the time',
                 '(which I do have)', 'add new things once in a while', 'then whenever you check', 'there might be', 'something new..', 'I hope this isnt wasting your time', 'Now before I end this', 'I need to say 3 things:',
-                '1. I love you', '2. I kiss you', '3. I miss you', 'like every second', 'mwah', 'mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah ',
+                '1. I love you', '2. I kiss you', '3. I miss you', 'like every second', 'mwah', 'mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah ',
                 'I hope that was enough kisses', 'And remember', 'As long as I live', '(even if I dont lmao)', 'there will always be one to love you', 'The end', 'from here on it will begin at the start again',
                 'byeee...', 'you can leave now', 'there is nothing after', '...', 'what are you doing?,', 'okay..', 'no seriously.', 'leave.', '    ', '   ', '     ', '     ', '       ', '     ', '   ',
                 'lmao I love you<3', ' ', ' ', 'Also...', 'BE MY VALENTINE', 'And that was not a question so', 'for the last time bye', 'dont forget to tell me what you think about this',
@@ -198,7 +205,6 @@
             originalBtn.style.display = 'none';
             newBtn.style.display = 'none';
             expressBtn.style.display = 'none';
-            expressHistoryBtn.style.display = 'none'; // Hide expressHistoryBtn
 
             setInterval(() => {
                 animatedText.innerHTML = words[index];
@@ -211,7 +217,6 @@
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
             const expressBtn = document.getElementById('expressBtn');
-            const expressHistoryBtn = document.getElementById('expressHistoryBtn');
             const words = [
                 'Hellooo', 'Welcome back to ', 'The looped message  ', '  How have you been?', 'AND', 'more importantly', 'Where have you been woman??', 'I have too much', 'free time on my hands',
                 'and we have not been in touch', 'so', 'I did this ', 'Hoping you came again ofc', '(And I am like waring you that you need to come back bro okay✋?)', '(I am dying of boredommmm)',
@@ -236,7 +241,6 @@
             originalBtn.style.display = 'none';
             newBtn.style.display = 'none';
             expressBtn.style.display = 'none';
-            expressHistoryBtn.style.display = 'none'; // Hide expressHistoryBtn
 
             setInterval(() => {
                 animatedText.innerHTML = words[index];
@@ -249,28 +253,47 @@
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
             const expressBtn = document.getElementById('expressBtn');
-            const expressHistoryBtn = document.getElementById('expressHistoryBtn');
             const thankYouMessage = document.getElementById('thankYouMessage');
+            const expressionHistoryBox = document.getElementById('expressionHistoryBox');
 
             originalBtn.style.display = 'none';
             newBtn.style.display = 'none';
             expressBtn.style.display = 'none';
-            expressHistoryBtn.style.display = 'none'; // Hide expressHistoryBtn
             expressionBox.style.display = 'block';
 
             // Hide the thank you message if it was previously displayed
             thankYouMessage.style.display = 'none';
+
+            // Hide the expression history box
+            expressionHistoryBox.style.display = 'none';
+        }
+
+        function showExpressionHistory() {
+            const expressionBox = document.getElementById('expressionBox');
+            const expressionHistoryBox = document.getElementById('expressionHistoryBox');
+            const expressionInput = document.getElementById('expression-input');
+
+            // Check if the trigger word "show me" is entered
+            if (expressionInput.value.toLowerCase() === 'show me') {
+                expressionBox.style.display = 'none';
+                expressionHistoryBox.style.display = 'block';
+
+                // Show the expression history
+                document.getElementById('expression-history').value = expressionHistory.join('\n');
+            }
         }
 
         function submitExpression() {
             const expressionBox = document.getElementById('expressionBox');
             const expressionInput = document.getElementById('expression-input');
             const expressBtn = document.getElementById('expressBtn');
-            const thankYouMessage = document.getElementById('thankYouMessage');
-            const expressionHistoryBtn = document.getElementById('expressHistoryBtn');
+            const expressionHistoryBox = document.getElementById('expressionHistoryBox');
 
             // Get the data from the expression box input
             const expressionData = expressionInput.value;
+
+            // Add the expression to the history
+            expressionHistory.push(expressionData);
 
             // Hide the expression box
             expressionBox.style.display = 'none';
@@ -278,23 +301,20 @@
             // Display the thank you message as an alert
             alert('Thank you for letting me know!');
 
-            // Add expressionData to history
-            expressionHistory.push(expressionData);
-
             // Reset to buttons after submitting
             resetToButtons();
 
-            // Show expressHistoryBtn if history is not empty
-            if (expressionHistory.length > 0) {
-                expressionHistoryBtn.style.display = 'inline-block';
-            }
+            // Clear the input field in the expression box
+            expressionInput.value = '';
+
+            // Hide the expression history box
+            expressionHistoryBox.style.display = 'none';
         }
 
         function resetToButtons() {
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
             const expressBtn = document.getElementById('expressBtn');
-            const expressHistoryBtn = document.getElementById('expressHistoryBtn');
             const expressionBox = document.getElementById('expressionBox');
             const expressionInput = document.getElementById('expression-input');
 
@@ -302,28 +322,12 @@
             originalBtn.style.display = 'inline-block';
             newBtn.style.display = 'inline-block';
             expressBtn.style.display = 'inline-block';
-            expressHistoryBtn.style.display = 'inline-block'; // Show expressHistoryBtn
 
             // Hide the expression box after submitting
             expressionBox.style.display = 'none';
 
             // Clear the input field in the expression box
             expressionInput.value = '';
-        }
-
-        function showExpressionHistory() {
-            const expressHistoryBox = document.getElementById('expressHistoryBox');
-            const expressHistoryBtn = document.getElementById('expressHistoryBtn');
-            const expressionHistoryTextarea = document.getElementById('expression-history');
-
-            // Display the expression history box
-            expressHistoryBox.style.display = 'block';
-
-            // Display the expression history in the textarea
-            expressionHistoryTextarea.value = expressionHistory.join('\n');
-
-            // Hide the expressHistoryBtn after showing history
-            expressHistoryBtn.style.display = 'none';
         }
     </script>
 </body>
