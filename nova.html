@@ -182,17 +182,23 @@
             expressBtn.style.display = 'inline-block';
         }
 
-        function showExpressionBox() {
-            const expressionBox = document.getElementById('expressionBox');
-            const originalBtn = document.getElementById('originalBtn');
-            const newBtn = document.getElementById('newBtn');
-            const expressBtn = document.getElementById('expressBtn');
-            const thankYouMessage = document.getElementById('thankYouMessage');
+        function showExpressionHistory() {
+    const expressHistoryBox = document.getElementById('expressHistoryBox');
+    const originalBtn = document.getElementById('originalBtn');
+    const newBtn = document.getElementById('newBtn');
+    const expressBtn = document.getElementById('expressBtn');
+    const secretBox = document.getElementById('secretBox');
 
-            originalBtn.style.display = 'none';
-            newBtn.style.display = 'none';
-            expressBtn.style.display = 'none';
-            expressionBox.style.display = 'block';
+    originalBtn.style.display = 'none';
+    newBtn.style.display = 'none';
+    expressBtn.style.display = 'none';
+    secretBox.style.display = 'none';
+    
+    expressHistoryBox.style.display = 'block';
+
+    // Display the expression history
+    const expressionHistory = localStorage.getItem('expressionHistory');
+    document.getElementById('expression-history').value = expressionHistory;
 
             // Hide the thank you message if it was previously displayed
             thankYouMessage.style.display = 'none';
