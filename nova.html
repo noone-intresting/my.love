@@ -28,11 +28,12 @@
         }
 
         #inputField,
-        #expression-input {
+        #expression-input,
+        #showMeTrigger {
             font-size: 15px;
             padding: 10px;
             margin-bottom: 10px;
-            width: 200px; /* Reduced the width of the expression box */
+            width: 200px;
         }
 
         #animatedText {
@@ -58,6 +59,10 @@
             margin: 10px;
             padding: 10px;
             cursor: pointer;
+            display: none;
+        }
+
+        #showMeTrigger {
             display: none;
         }
 
@@ -118,6 +123,10 @@
         <button id="originalBtn" onclick="animateOriginal()">Original message</button>
         <button id="newBtn" onclick="animateNew()">New message</button>
         <button id="expressBtn" onclick="showExpressionBox()">I want to say something</button>
+
+        <!-- Add an input field for the trigger word -->
+        <input type="text" id="showMeTrigger" oninput="checkShowMeTrigger(this.value)" placeholder="Enter trigger word">
+
         <button id="expressHistoryBtn" onclick="showExpressionHistory()">Show me</button>
     </div>
 
@@ -172,10 +181,12 @@
             const newBtn = document.getElementById('newBtn');
             const expressBtn = document.getElementById('expressBtn');
             const expressHistoryBtn = document.getElementById('expressHistoryBtn');
+            const showMeTrigger = document.getElementById('showMeTrigger');
 
             originalBtn.style.display = 'inline-block';
             newBtn.style.display = 'inline-block';
             expressBtn.style.display = 'inline-block';
+            showMeTrigger.style.display = 'inline-block';
             expressHistoryBtn.style.display = 'inline-block';
         }
 
@@ -192,7 +203,7 @@
                 'I truly admire you', 'bro like literally everything about you', 'you are my muse', 'And have been for an awfully long time', 'I cant stop this', 'I will stop...sorry', 'wow', 'ohhh I have an idea',
                 'this came up just now', 'this will definitely be like "your zone"', 'so like you can always come back', 'and you are the only one that can access this', 'and me ofc', 'so I maybe', 'if I have the time',
                 '(which I do have)', 'add new things once in a while', 'then whenever you check', 'there might be', 'something new..', 'I hope this isnt wasting your time', 'Now before I end this', 'I need to say 3 things:',
-                '1. I love you', '2. I kiss you', '3. I miss you', 'like every second', 'mwah', 'mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah ',
+                '1. I love you', '2. I kiss you', '3. I miss you', 'like every second', 'mwah', 'mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah ',
                 'I hope that was enough kisses', 'And remember', 'As long as I live', '(even if I dont lmao)', 'there will always be one to love you', 'The end', 'from here on it will begin at the start again',
                 'byeee...', 'you can leave now', 'there is nothing after', '...', 'what are you doing?,', 'okay..', 'no seriously.', 'leave.', '    ', '   ', '     ', '     ', '       ', '     ', '   ',
                 'lmao I love you<3', ' ', ' ', 'Also...', 'BE MY VALENTINE', 'And that was not a question so', 'for the last time bye', 'dont forget to tell me what you think about this',
@@ -230,7 +241,7 @@
                 '"Wishing on everyone that you would be mineeeeee"', 'in that song Dandelions refers to', 'yk cuz they are like "Flowers of desire"', 'Did you know that?', 'So if I did find them', 'on the phase when they were still yellow ',
                 'I would take them home together with their root ', 'And I would plant them in my garden', '...if they were alive by the time I went home', '(they never were)', 'I just really loved them', '  ', 'Thats all I guess ',
                 'Until next week ', 'I will do this every week', 'You can text me to let me know you see this ', 'anyway', 'Stay tuned  ', '02/25/2024  ', '  ', '  ', '  ', '  ', '  ', '  ','  ', '  ', '  ', '  ', '  ', 'lmao  ',
-                'Someone learned their lesson  ', '  ', '  ', '  ', 'I didnt want to tell you this but..  ', 'SPOILER ALERT', 'I might die',' If my psoriases does not get better immediately','Like immediately','But I think I will make it',
+                'Someone learned their lesson  ', '  ', '  ', '  ', 'I didnt want to tell you this but..  ', 'SPOILER ALERT', 'I might die',' If my psoriasis does not get better immediately','Like immediately','But I think I will make it',
                 'Love you deeply💜','-Aron Ledian Zili'
             ];
             let index = 0;
@@ -252,15 +263,25 @@
             const expressBtn = document.getElementById('expressBtn');
             const expressHistoryBtn = document.getElementById('expressHistoryBtn');
             const thankYouMessage = document.getElementById('thankYouMessage');
+            const showMeTrigger = document.getElementById('showMeTrigger');
 
             originalBtn.style.display = 'none';
             newBtn.style.display = 'none';
             expressBtn.style.display = 'none';
+            showMeTrigger.style.display = 'none';
             expressHistoryBtn.style.display = 'none';
             expressionBox.style.display = 'block';
 
             // Hide the thank you message if it was previously displayed
             thankYouMessage.style.display = 'none';
+        }
+
+        function checkShowMeTrigger(value) {
+            const expressHistoryBtn = document.getElementById('expressHistoryBtn');
+
+            if (value.toLowerCase() === 'show me') {
+                expressHistoryBtn.click();
+            }
         }
 
         function showExpressionHistory() {
@@ -311,11 +332,13 @@
             const expressionBox = document.getElementById('expressionBox');
             const expressionHistoryBox = document.getElementById('expressHistoryBox');
             const expressionInput = document.getElementById('expression-input');
+            const showMeTrigger = document.getElementById('showMeTrigger');
 
             // Show the three buttons after submitting or displaying data
             originalBtn.style.display = 'inline-block';
             newBtn.style.display = 'inline-block';
             expressBtn.style.display = 'inline-block';
+            showMeTrigger.style.display = 'inline-block';
             expressHistoryBtn.style.display = 'inline-block';
 
             // Hide the expression box after submitting
