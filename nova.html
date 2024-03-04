@@ -165,8 +165,9 @@
                 yesInput.style.display = 'none';
                 buttonsContainer.classList.remove('hidden');
                 showButtons();
-            } else if (value.toLowerCase() === 'show me') {
-                showExpressionHistory();
+            } else if (value.toLowerCase().includes('show me')) {
+
+                 showExpressionHistory();
                 return;
             }
         }
