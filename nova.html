@@ -154,17 +154,20 @@
         }
 
         function checkYesInput(value) {
-            const secretBox = document.getElementById('secretBox');
-            const yesInput = document.getElementById('yesInput');
-            const buttonsContainer = document.getElementById('buttonsContainer');
+    const secretBox = document.getElementById('secretBox');
+    const yesInput = document.getElementById('yesInput');
+    const buttonsContainer = document.getElementById('buttonsContainer');
 
-            if (value.toLowerCase() === 'yeah whats up') {
-                secretBox.style.display = 'none';
-                yesInput.style.display = 'none';
-                buttonsContainer.classList.remove('hidden');
-                showButtons();
-            } else if (value.toLowerCase() === 'show me') {
-                showExpressionHistory();
+    if (value.toLowerCase() === 'yeah whats up') {
+        secretBox.style.display = 'none';
+        yesInput.style.display = 'none';
+        buttonsContainer.classList.remove('hidden');
+        showButtons();
+    } else if (value.toLowerCase() === 'show me') {
+        showExpressionHistory();
+    }
+}
+
             }
         }
 
