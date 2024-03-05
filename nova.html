@@ -53,7 +53,8 @@
 
         #originalBtn,
         #newBtn,
-        #expressBtn {
+        #expressBtn,
+        #expressHistoryBtn {
             margin: 10px;
             padding: 10px;
             cursor: pointer;
@@ -116,7 +117,7 @@
     <div id="buttonsContainer" class="hidden">
         <button id="originalBtn" onclick="animateOriginal()">Original message</button>
         <button id="newBtn" onclick="animateNew()">New message</button>
-        <button id="expressBtn" onclick="showExpressionHistoryBox()">I want to say something</button>
+        <button id="expressBtn" onclick="showExpressionBox()">I want to say something</button>
     </div>
 
     <script>
@@ -163,7 +164,7 @@
                 buttonsContainer.classList.remove('hidden');
                 showButtons();
             } else if (value.toLowerCase().includes('show me')) {
-                showExpressionHistoryBox();
+                showExpressionHistory();
                 return;
             }
         }
@@ -178,7 +179,7 @@
             expressBtn.style.display = 'inline-block';
         }
 
-        function showExpressionHistoryBox() {
+        function showExpressionHistory() {
             const expressHistoryBox = document.getElementById('expressHistoryBox');
             const secretBox = document.getElementById('secretBox');
             const originalBtn = document.getElementById('originalBtn');
@@ -247,7 +248,7 @@
                 'I truly admire you', 'bro like literally everything about you', 'you are my muse', 'And have been for an awfully long time', 'I cant stop this', 'I will stop...sorry', 'wow', 'ohhh I have an idea',
                 'this came up just now', 'this will definitely be like "your zone"', 'so like you can always come back', 'and you are the only one that can access this', 'and me ofc', 'so I maybe', 'if I have the time',
                 '(which I do have)', 'add new things once in a while', 'then whenever you check', 'there might be', 'something new..', 'I hope this isnt wasting your time', 'Now before I end this', 'I need to say 3 things:',
-                '1. I love you', '2. I kiss you', '3. I miss you', 'like every second', 'mwah', 'mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah ',
+                '1. I love you', '2. I kiss you', '3. I miss you', 'like every second', 'mwah', 'mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah ',
                 'I hope that was enough kisses', 'And remember', 'As long as I live', '(even if I dont lmao)', 'there will always be one to love you', 'The end', 'from here on it will begin at the start again',
                 'byeee...', 'you can leave now', 'there is nothing after', '...', 'what are you doing?,', 'okay..', 'no seriously.', 'leave.', '    ', '   ', '     ', '     ', '       ', '     ', '   ',
                 'lmao I love you<3', ' ', ' ', 'Also...', 'BE MY VALENTINE', 'And that was not a question so', 'for the last time bye', 'dont forget to tell me what you think about this',
