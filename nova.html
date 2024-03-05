@@ -32,7 +32,7 @@
             font-size: 15px;
             padding: 10px;
             margin-bottom: 10px;
-            width: 200px;
+            width: 200px; 
         }
 
         #animatedText {
@@ -53,8 +53,7 @@
 
         #originalBtn,
         #newBtn,
-        #expressBtn,
-        #expressHistoryBtn {
+        #expressBtn {
             margin: 10px;
             padding: 10px;
             cursor: pointer;
@@ -181,16 +180,19 @@
 
         function showExpressionHistory() {
             const expressHistoryBox = document.getElementById('expressHistoryBox');
+            const secretBox = document.getElementById('secretBox');
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
             const expressBtn = document.getElementById('expressBtn');
 
+            secretBox.style.display = 'none';
+
             originalBtn.style.display = 'none';
             newBtn.style.display = 'none';
             expressBtn.style.display = 'none';
+
             expressHistoryBox.style.display = 'block';
 
-            // Display the expression history
             const expressionHistory = localStorage.getItem('expressionHistory');
             document.getElementById('expression-history').value = expressionHistory;
 
@@ -245,7 +247,7 @@
                 'I truly admire you', 'bro like literally everything about you', 'you are my muse', 'And have been for an awfully long time', 'I cant stop this', 'I will stop...sorry', 'wow', 'ohhh I have an idea',
                 'this came up just now', 'this will definitely be like "your zone"', 'so like you can always come back', 'and you are the only one that can access this', 'and me ofc', 'so I maybe', 'if I have the time',
                 '(which I do have)', 'add new things once in a while', 'then whenever you check', 'there might be', 'something new..', 'I hope this isnt wasting your time', 'Now before I end this', 'I need to say 3 things:',
-                '1. I love you', '2. I kiss you', '3. I miss you', 'like every second', 'mwah', 'mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah ',
+                '1. I love you', '2. I kiss you', '3. I miss you', 'like every second', 'mwah', 'mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah ',
                 'I hope that was enough kisses', 'And remember', 'As long as I live', '(even if I dont lmao)', 'there will always be one to love you', 'The end', 'from here on it will begin at the start again',
                 'byeee...', 'you can leave now', 'there is nothing after', '...', 'what are you doing?,', 'okay..', 'no seriously.', 'leave.', '    ', '   ', '     ', '     ', '       ', '     ', '   ',
                 'lmao I love you<3', ' ', ' ', 'Also...', 'BE MY VALENTINE', 'And that was not a question so', 'for the last time bye', 'dont forget to tell me what you think about this',
@@ -296,11 +298,6 @@
                 animatedText.innerHTML = words[index];
                 index = (index + 1) % words.length;
             }, 3500);
-        }
-        
-        function showExpressionBox() {
-            const expressionBox = document.getElementById('expressionBox');
-            expressionBox.style.display = 'block';
         }
     </script>
 </body>
