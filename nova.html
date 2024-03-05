@@ -17,8 +17,6 @@
             color: purple;
         }
 
-        
-
         #password-container,
         #animatedTextContainer,
         #boxContainer,
@@ -34,7 +32,7 @@
             font-size: 15px;
             padding: 10px;
             margin-bottom: 10px;
-            width: 200px; 
+            width: 200px;
         }
 
         #animatedText {
@@ -166,8 +164,7 @@
                 buttonsContainer.classList.remove('hidden');
                 showButtons();
             } else if (value.toLowerCase().includes('show me')) {
-
-                 showExpressionHistory();
+                showExpressionHistory();
                 return;
             }
         }
@@ -180,30 +177,6 @@
             originalBtn.style.display = 'inline-block';
             newBtn.style.display = 'inline-block';
             expressBtn.style.display = 'inline-block';
-        }
-
-        function showExpressionHistory() {
-    const expressHistoryBox = document.getElementById('expressHistoryBox');
-    const secretBox = document.getElementById('secretBox');
-    const originalBtn = document.getElementById('originalBtn');
-    const newBtn = document.getElementById('newBtn');
-    const expressBtn = document.getElementById('expressBtn');
-
-    
-    secretBox.style.display = 'none';
-
-    
-    originalBtn.style.display = 'none';
-    newBtn.style.display = 'none';
-    expressBtn.style.display = 'none';
-
-    
-    expressHistoryBox.style.display = 'block';
-
-    const expressionHistory = localStorage.getItem('expressionHistory');
-    document.getElementById('expression-history').value = expressionHistory;
-            
-    thankYouMessage.style.display = 'none';
         }
 
         function showExpressionHistory() {
@@ -220,25 +193,23 @@
             // Display the expression history
             const expressionHistory = localStorage.getItem('expressionHistory');
             document.getElementById('expression-history').value = expressionHistory;
+
+            thankYouMessage.style.display = 'none';
         }
 
         function submitExpression() {
             const expressionBox = document.getElementById('expressionBox');
             const expressionInput = document.getElementById('expression-input');
 
-            
             const expressionData = expressionInput.value;
 
-            
             const expressionHistory = localStorage.getItem('expressionHistory') || '';
             localStorage.setItem('expressionHistory', expressionHistory + '\n' + expressionData);
 
             expressionBox.style.display = 'none';
 
-         
             alert('Thank you for letting me know!');
 
-        
             resetToButtons();
         }
 
@@ -250,17 +221,14 @@
             const expressHistoryBox = document.getElementById('expressHistoryBox');
             const expressionInput = document.getElementById('expression-input');
 
-          
             originalBtn.style.display = 'inline-block';
             newBtn.style.display = 'inline-block';
             expressBtn.style.display = 'inline-block';
 
-            
             expressionBox.style.display = 'none';
 
             expressionInput.value = '';
 
-           
             expressHistoryBox.style.display = 'none';
         }
 
@@ -328,6 +296,11 @@
                 animatedText.innerHTML = words[index];
                 index = (index + 1) % words.length;
             }, 3500);
+        }
+        
+        function showExpressionBox() {
+            const expressionBox = document.getElementById('expressionBox');
+            expressionBox.style.display = 'block';
         }
     </script>
 </body>
