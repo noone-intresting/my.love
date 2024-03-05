@@ -178,6 +178,13 @@
             newBtn.style.display = 'inline-block';
             expressBtn.style.display = 'inline-block';
         }
+        function showExpressionBox() {
+        const expressionBox = document.getElementById('expressionBox');
+        const buttonsContainer = document.getElementById('buttonsContainer');
+
+        buttonsContainer.classList.add('hidden');
+        expressionBox.classList.remove('hidden');
+        }
 
         function showExpressionHistory() {
             const expressHistoryBox = document.getElementById('expressHistoryBox');
