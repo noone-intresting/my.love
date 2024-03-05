@@ -208,19 +208,19 @@
         }
 
         function submitExpression() {
-            const expressionBox = document.getElementById('expressionBox');
-            const expressionInput = document.getElementById('expression-input');
+        const expressionBox = document.getElementById('expressionBox');
+        const expressionInput = document.getElementById('expression-input');
+        const buttonsContainer = document.getElementById('buttonsContainer');
 
-            const expressionData = expressionInput.value;
+        const expressionData = expressionInput.value;
 
-            const expressionHistory = localStorage.getItem('expressionHistory') || '';
-            localStorage.setItem('expressionHistory', expressionHistory + '\n' + expressionData);
+        const expressionHistory = localStorage.getItem('expressionHistory') || '';
+        localStorage.setItem('expressionHistory', expressionHistory + '\n' + expressionData);
 
-            expressionBox.style.display = 'none';
+        expressionBox.classList.add('hidden');
+        buttonsContainer.classList.remove('hidden');
 
-            alert('Thank you for letting me know!');
-
-            resetToButtons();
+        alert('Thank you for letting me know!')
         }
 
         function resetToButtons() {
