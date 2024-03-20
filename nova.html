@@ -21,7 +21,6 @@
         #animatedTextContainer,
         #boxContainer,
         #buttonsContainer,
-        #expressionBox,
         #expressHistoryBox {
             text-align: center;
             margin: 10px;
@@ -52,9 +51,7 @@
         }
 
         #originalBtn,
-        #newBtn,
-        #expressBtn,
-        #expressHistoryBtn {
+        #newBtn {
             margin: 10px;
             padding: 10px;
             cursor: pointer;
@@ -103,14 +100,6 @@
         </div>
     </div>
 
-    <div id="expressionBox" class="hidden">
-        <p>Tell me</p>
-        
-        <input type="text" id="expression-input" placeholder="well...">
-        
-        <button onclick="submitExpression()">Done</button>
-    </div>
-
     <div id="expressHistoryBox" class="hidden">
         <textarea id="expression-history" readonly></textarea>
     </div>
@@ -120,7 +109,6 @@
     <div id="buttonsContainer" class="hidden">
         <button id="originalBtn" onclick="animateOriginal()">Original message</button>
         <button id="newBtn" onclick="animateNew()">New message</button>
-        <button id="expressBtn" onclick="showExpressionBox()">I want to say something</button>
     </div>
 
     <script>
@@ -175,19 +163,9 @@
         function showButtons() {
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
-            const expressBtn = document.getElementById('expressBtn');
 
             originalBtn.style.display = 'inline-block';
             newBtn.style.display = 'inline-block';
-            expressBtn.style.display = 'inline-block';
-        }
-        function showExpressionBox() {
-
-        const expressionBox = document.getElementById('expressionBox');
-        const buttonsContainer = document.getElementById('buttonsContainer');
-
-        buttonsContainer.classList.add('hidden');
-        expressionBox.classList.remove('hidden');
         }
 
         function showExpressionHistory() {
@@ -195,13 +173,11 @@
             const secretBox = document.getElementById('secretBox');
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
-            const expressBtn = document.getElementById('expressBtn');
 
             secretBox.style.display = 'none';
 
             originalBtn.style.display = 'none';
             newBtn.style.display = 'none';
-            expressBtn.style.display = 'none';
 
             expressHistoryBox.style.display = 'block';
 
@@ -211,55 +187,20 @@
             thankYouMessage.style.display = 'none';
         }
 
-        function submitExpression() {
-        const expressionBox = document.getElementById('expressionBox');
-        const expressionInput = document.getElementById('expression-input');
-        const buttonsContainer = document.getElementById('buttonsContainer');
-
-        const expressionData = expressionInput.value;
-
-        const expressionHistory = localStorage.getItem('expressionHistory') || '';
-        localStorage.setItem('expressionHistory', expressionHistory + '\n' + expressionData);
-
-        expressionBox.classList.add('hidden');
-        buttonsContainer.classList.remove('hidden');
-
-        alert('Thank you for letteing me know love.')
-        }
-
-        function resetToButtons() {
-            const originalBtn = document.getElementById('originalBtn');
-            const newBtn = document.getElementById('newBtn');
-            const expressBtn = document.getElementById('expressBtn');
-            const expressionBox = document.getElementById('expressionBox');
-            const expressHistoryBox = document.getElementById('expressHistoryBox');
-            const expressionInput = document.getElementById('expression-input');
-
-            originalBtn.style.display = 'inline-block';
-            newBtn.style.display = 'inline-block';
-            expressBtn.style.display = 'inline-block';
-
-            expressionBox.style.display = 'none';
-
-            expressionInput.value = '';
-
-            expressHistoryBox.style.display = 'none';
-        }
-
         function animateOriginal() {
             const animatedText = document.getElementById('animatedText');
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
-            const expressBtn = document.getElementById('expressBtn');
             const words = ['Nothing much', 'But this is pretty cool right?', 'I hope so', 'I spent too much time', 'for you not to like it', 'it is kind of plain', 'and just text but yea', 'anywayy...', 'How have you been?',
                 'You and your loved ones alright?', 'If yes I am glad', 'If no you can come and talk if you want', 'I made this simply because', 'it will be here forever', 'like fr', 'so whenever you feel bad', '(hopefully)',
                 'this makes you feel better', 'And yeah..', 'to me, it does not sound like a good idea', 'and sometimes it does', 'but really it does not matter what I think', 'But see it will go on nearly forever', '...',
-                'yeah no', 'that was a lie', 'it will not go on forever', 'it will continue as a loop', 'not very comforting', 'but this is all I can do yk?', 'I hope you stay to the very end', 'I am not going through what I have written',
+                'yeah no', 'that was a lie', 'it will not go on forever', 'it will continue as a loop', 'not very comforting', 'but this is all I can do yk?', 'I hope you stay to the very end', '
+                'I am not going through what I have written',
                 'so I will be yapping', 'I uhh...', 'I forgot what I was saying earlier', 'oh yeah', 'so it will exist forever', 'Cool right?', '(I hope you think so T-T)', 'Hey nova', 'I also have this feeling that I need to share',
                 'I truly admire you', 'bro like literally everything about you', 'you are my muse', 'And have been for an awfully long time', 'I cant stop this', 'I will stop...sorry', 'wow', 'ohhh I have an idea',
                 'this came up just now', 'this will definitely be like "your zone"', 'so like you can always come back', 'and you are the only one that can access this', 'and me ofc', 'so I maybe', 'if I have the time',
                 '(which I do have)', 'add new things once in a while', 'then whenever you check', 'there might be', 'something new..', 'I hope this isnt wasting your time', 'Now before I end this', 'I need to say 3 things:',
-                '1. I love you', '2. I kiss you', '3. I miss you', 'like every second', 'mwah', 'mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah ',
+                '1. I love you', '2. I kiss you', '3. I miss you', 'like every second', 'mwah', 'mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah ',
                 'I hope that was enough kisses', 'And remember', 'As long as I live', '(even if I dont lmao)', 'there will always be one to love you', 'The end', 'from here on it will begin at the start again',
                 'byeee...', 'you can leave now', 'there is nothing after', '...', 'what are you doing?,', 'okay..', 'no seriously.', 'leave.', '    ', '   ', '     ', '     ', '       ', '     ', '   ',
                 'lmao I love you<3', ' ', ' ', 'Also...', 'BE MY VALENTINE', 'And that was not a question so', 'for the last time bye', 'dont forget to tell me what you think about this',
@@ -268,7 +209,6 @@
 
             originalBtn.style.display = 'none';
             newBtn.style.display = 'none';
-            expressBtn.style.display = 'none';
 
             setInterval(() => {
                 animatedText.innerHTML = words[index];
@@ -280,7 +220,6 @@
             const animatedText = document.getElementById('animatedText');
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
-            const expressBtn = document.getElementById('expressBtn');
             const words = [
                 'Hellooo', 'Welcome back to ', 'The looped message  ', '  How have you been?', 'AND', 'more importantly', 'Where have you been woman??', 'I have too much', 'free time on my hands',
                 'and we have not been in touch', 'so', 'I did this ', 'Hoping you came again ofc', '(And I am like waring you that you need to come back bro okay✋?)', '(I am dying of boredommmm)',
@@ -295,16 +234,13 @@
                 'I did not want to change the part where', 'the first message had to go', 'so I decided to keep it.', 'Also I am working on the flower still  ', 'fun fact they are called', '"Lule Dëshira"', 'which translates to',
                 'Flowers of desire or Wish flower', 'and as a kid I would blow on them', 'and if you could blow all the seeds away', 'your wish would come true bla bla bla...', 'Thats what that line',
                 '"Wishing on everyone that you would be mineeeeee"', 'in that song Dandelions refers to', 'yk cuz they are like "Flowers of desire"', 'Did you know that?', 'So if I did find them', 'on the phase when they were still yellow ',
-                'I would take them home together with their root ', 'And I would plant them in my garden', '...if they were alive by the time I went home', '(they never were)', 'I just really loved them', '  ', 'Thats all I guess ',
-                'Until next week ', 'I will do this every week', 'You can text me to let me know you see this ', 'anyway', 'Stay tuned  ', '02/25/2024  ', '  ', '  ', '  ', '  ', '  ', '  ','  ', '  ', '  ', '  ', '  ', 'lmao  ',
-                'Someone learned their lesson  ', '  ', '  ', '  ', 'I didnt want to tell you this but..  ', 'SPOILER ALERT', 'I might die',' If my psoriasis does not get better immediately','Like immediately','But I think I will make it',
+                'I would take them home together with their root ', 'And I would plant them in my garden', '...if they were alive by the time I went home', '(they never were)', 'I just really l                '  ', 'I didnt want to tell you this but..  ', 'SPOILER ALERT', 'I might die',' If my psoriasis does not get better immediately','Like immediately','But I think I will make it',
                 'Love you deeply💜','-Aron Ledian Zili'
             ];
             let index = 0;
 
             originalBtn.style.display = 'none';
             newBtn.style.display = 'none';
-            expressBtn.style.display = 'none';
 
             setInterval(() => {
                 animatedText.innerHTML = words[index];
@@ -315,3 +251,4 @@
 </body>
 
 </html>
+
