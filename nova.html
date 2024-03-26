@@ -50,12 +50,14 @@
             transition: opacity 1s ease-in-out;
         }
 
-        #originalBtn,
-        #newBtn {
-            margin: 10px;
-            padding: 10px;
-            cursor: pointer;
-            display: none;
+      #originalBtn,
+#newBtn {
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+
         }
 
         #thankYouMessage {
@@ -100,16 +102,11 @@
         </div>
     </div>
 
-    <div id="expressHistoryBox" class="hidden">
-        <textarea id="expression-history" readonly></textarea>
-    </div>
+   <div id="buttonsContainer" class="hidden">
+    <button id="originalBtn" onclick="animateOriginal()">Original message</button>
+    <button id="newBtn" onclick="animateNew()">New message</button>
+</div>
 
-    <div id="thankYouMessage">Thank you for letting me know love.</div>
-
-    <div id="buttonsContainer" class="hidden">
-        <button id="originalBtn" onclick="animateOriginal()">Original message</button>
-        <button id="newBtn" onclick="animateNew()">New message</button>
-    </div>
 
     <script>
         function checkPassword() {
