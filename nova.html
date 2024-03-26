@@ -129,7 +129,6 @@
             const animatedText = document.getElementById('animatedText');
             const boxContainer = document.getElementById('boxContainer');
             const secretBox = document.getElementById('secretBox');
-            const buttonsContainer = document.getElementById('buttonsContainer');
 
             if (value.toLowerCase() === 'hello') {
                 document.getElementById('inputField').style.display = 'none';
@@ -151,21 +150,11 @@
 
             if (value.toLowerCase() === 'yeah whats up') {
                 secretBox.style.display = 'none';
-                yesInput.style.display = 'none';
                 buttonsContainer.classList.remove('hidden');
-                showButtons();
             } else if (value.toLowerCase().includes('show me')) {
                 showExpressionHistory();
                 return;
             }
-        }
-
-        function showButtons() {
-            const originalBtn = document.getElementById('originalBtn');
-            const newBtn = document.getElementById('newBtn');
-
-            originalBtn.style.display = 'inline-block';
-            newBtn.style.display = 'inline-block';
         }
 
         function showExpressionHistory() {
@@ -175,10 +164,6 @@
             const newBtn = document.getElementById('newBtn');
 
             secretBox.style.display = 'none';
-
-            originalBtn.style.display = 'none';
-            newBtn.style.display = 'none';
-
             expressHistoryBox.style.display = 'block';
 
             const expressionHistory = localStorage.getItem('expressionHistory');
@@ -192,47 +177,46 @@
             const originalBtn = document.getElementById('originalBtn');
             const newBtn = document.getElementById('newBtn');
             const words = ['Nothing much', 'But this is pretty cool right?', 'I hope so', 'I spent too much time', 'for you not to like it', 'it is kind of plain', 'and just text but yea', 'anywayy...', 'How have you been?',
-                'You and your loved ones alright?', 'If yes I am glad', 'If no you can come and talk if you want', 'I made this simply because', 'it will be here forever', 'like fr', 'so whenever you feel bad', '(hopefully)',
-                'this makes you feel better', 'And yeah..', 'to me, it does not sound like a good idea', 'and sometimes it does', 'but really it does not matter what I think', 'But see it will go on nearly forever', '...',
-                'yeah no', 'that was a lie', 'it will not go on forever', 'it will continue as a loop', 'not very comforting', 'but this is all I can do yk?', 'I hope you stay to the very end', '',
-                'I am not going through what I have written',
-                'so I will be yapping', 'I uhh...', 'I forgot what I was saying earlier', 'oh yeah', 'so it will exist forever', 'Cool right?', '(I hope you think so T-T)', 'Hey nova', 'I also have this feeling that I need to share',
-                'I truly admire you', 'bro like literally everything about you', 'you are my muse', 'And have been for an awfully long time', 'I cant stop this', 'I will stop...sorry', 'wow', 'ohhh I have an idea',
-                'this came up just now', 'this will definitely be like "your zone"', 'so like you can always come back', 'and you are the only one that can access this', 'and me ofc', 'so I maybe', 'if I have the time',
-                '(which I do have)', 'add new things once in a while', 'then whenever you check', 'there might be', 'something new..', 'I hope this isnt wasting your time', 'Now before I end this', 'I need to say 3 things:',
-                '1. I love you', '2. I kiss you', '3. I miss you', 'like every second', 'mwah', 'mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah ',
-                'I hope that was enough kisses', 'And remember', 'As long as I live', '(even if I dont lmao)', 'there will always be one to love you', 'The end', 'from here on it will begin at the start again',
-                'byeee...', 'you can leave now', 'there is nothing after', '...', 'what are you doing?,', 'okay..', 'no seriously.', 'leave.', '    ', '   ', '     ', '     ', '       ', '     ', '   ',
-                'lmao I love you<3', ' ', ' ', 'Also...', 'BE MY VALENTINE', 'And that was not a question so', 'for the last time bye', 'dont forget to tell me what you think about this',
-                'and tell me if I can make it better', 'okay?', 'bye bye', '       ', ' ', ' ', ' ', ' ', ' '];
-            let index = 0;
+'You and your loved ones alright?', 'If yes I am glad', 'If no you can come and talk if you want', 'I made this simply because', 'it will be here forever', 'like fr', 'so whenever you feel bad', '(hopefully)',
+'this makes you feel better', 'And yeah..', 'to me, it does not sound like a good idea', 'and sometimes it does', 'but really it does not matter what I think', 'But see it will go on nearly forever', '...',
+'yeah no', 'that was a lie', 'it will not go on forever', 'it will continue as a loop', 'not very comforting', 'but this is all I can do yk?', 'I hope you stay to the very end', '',
+'I am not going through what I have written',
+'so I will be yapping', 'I uhh...', 'I forgot what I was saying earlier', 'oh yeah', 'so it will exist forever', 'Cool right?', '(I hope you think so T-T)', 'Hey nova', 'I also have this feeling that I need to share',
+'I truly admire you', 'bro like literally everything about you', 'you are my muse', 'And have been for an awfully long time', 'I cant stop this', 'I will stop...sorry', 'wow', 'ohhh I have an idea',
+'this came up just now', 'this will definitely be like "your zone"', 'so like you can always come back', 'and you are the only one that can access this', 'and me ofc', 'so I maybe', 'if I have the time',
+'(which I do have)', 'add new things once in a while', 'then whenever you check', 'there might be', 'something new..', 'I hope this isnt wasting your time', 'Now before I end this', 'I need to say 3 things:',
+'1. I love you', '2. I kiss you', '3. I miss you', 'like every second', 'mwah', 'mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah ',
+'I hope that was enough kisses', 'And remember', 'As long as I live', '(even if I dont lmao)', 'there will always be one to love you', 'The end', 'from here on it will begin at the start again',
+'byeee...', 'you can leave now', 'there is nothing after', '...', 'what are you doing?,', 'okay..', 'no seriously.', 'leave.', '    ', '   ', '     ', '     ', '       ', '     ', '   ',
+'lmao I love you<3', ' ', ' ', 'Also...', 'BE MY VALENTINE', 'And that was not a question so', 'for the last time bye', 'dont forget to tell me what you think about this',
+'and tell me if I can make it better', 'okay?', 'bye bye', '       ', ' ', ' ', ' ', ' ', ' '];
+let index = 0;
 
-            originalBtn.style.display = 'none';
-            newBtn.style.display = 'none';
+originalBtn.style.display = 'none';
+newBtn.style.display = 'none';
 
-            setInterval(() => {
-                animatedText.innerHTML = words[index];
-                index = (index + 1) % words.length;
-            }, 3500);
-        }
+setInterval(() => {
+    animatedText.innerHTML = words[index];
+    index = (index + 1) % words.length;
+}, 3500);
+}
 
-        function animateNew() {
-            const animatedText = document.getElementById('animatedText');
-            const originalBtn = document.getElementById('originalBtn');
-            const newBtn = document.getElementById('newBtn');
-            const words = ['hey nova','I didnt want to like','be a nuisance','i...ummmm','i know that you like to be silent','but helloo??','anyway','yeah just didnt want to leave without saying goodbye','i reallyyyy hope you come','i thought of that song','Should I saty or should I go?','by The Clash',when i saw that locket','idk','come on and let me know','First I was just like','what is this girl on about','then yk i just dont think that it is really my choice','dont get me wrong','I would love to stay','but this constant paranoia','that makes me doubt','Nova','I dont have a problem with talking','as long as you make me feel like you actually wanna talk yk','i did this here becuase you wont be able to respond','and that you can keep seeing only if you want to','And i constantly feel the need to text you','"hey nova wanna talk before we are completly through"','but i know how that wouold end','Read at bla bla bla','or','Delivered','and that shit is not nice just so yk','but i hope you also let that go','I personally knew how it goes','and i just did not want to engage too much','i told you before','and you said that you knew where i was coming from','so i guess...','yeah','"is u going or staying?"','you think i should be going','you know it','and i think i agree with','you',' ','and if you have a diffrent opinion','i am one text away' ];
-            let index = 0;
+function animateNew() {
+const animatedText = document.getElementById('animatedText');
+const originalBtn = document.getElementById('originalBtn');
+const newBtn = document.getElementById('newBtn');
+const words = ['hey nova', 'I didnt want to like', 'be a nuisance', 'i...ummmm', 'i know that you like to be silent', 'but helloo??', 'anyway', 'yeah just didnt want to leave without saying goodbye', 'i reallyyyy hope you come', 'i thought of that song', 'Should I saty or should I go?', 'by The Clash', 'when i saw that locket', 'idk', 'come on and let me know', 'First I was just like', 'what is this girl on about', 'then yk i just dont think that it is really my choice', 'dont get me wrong', 'I would love to stay', 'but this constant paranoia', 'that makes me doubt', 'Nova', 'I dont have a problem with talking', 'as long as you make me feel like you actually wanna talk yk', 'i did this here becuase you wont be able to respond', 'and that you can keep seeing only if you want to', 'And i constantly feel the need to text you', '"hey nova wanna talk before we are completly through"', 'but i know how that wouold end', 'Read at bla bla bla', 'or', 'Delivered', 'and that shit is not nice just so yk', 'but i hope you also let that go', 'I personally knew how it goes', 'and i just did not want to engage too much', 'i told you before', 'and you said that you knew where i was coming from', 'so i guess...', 'yeah', '"is u going or staying?"', 'you think i should be going', 'you know it', 'and i think i agree with', 'you', ' ', 'and if you have a diffrent opinion', 'i am one text away'];
+let index = 0;
 
-            originalBtn.style.display = 'none'
-            newBtn.style.display = 'none';
+originalBtn.style.display = 'none';
+newBtn.style.display = 'none';
 
-            setInterval(() => {
-                animatedText.innerHTML = words[index];
-                index = (index + 1) % words.length;
-            }, 3500);
-        }
-    </script>
+setInterval(() => {
+    animatedText.innerHTML = words[index];
+    index = (index + 1) % words.length;
+}, 3500);
+}
+</script>
 </body>
-
 </html>
 
