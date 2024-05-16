@@ -1,10 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Just a title okay🙄</title>
+    <title>Password Box</title>
     <style>
         body {
             display: flex;
@@ -12,77 +12,28 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            font-family: 'Times New Roman', sans-serif;
             background-color: white;
-            color: purple;
         }
 
-        #password-container,
-        #animatedTextContainer,
-        #boxContainer,
-        #buttonsContainer,
-        #expressHistoryBox {
+        #password-container {
             text-align: center;
             margin: 10px;
         }
 
-        #inputField,
-        #expression-input {
+        #password-input {
             font-size: 15px;
             padding: 10px;
-            margin-bottom: 10px;
             width: 200px;
         }
 
-        #animatedText {
-            font-size: 20px;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-        }
-
-        #secretBox,
-        #thankYouMessage,
-        #expressHistoryBox {
-            display: none;
-            border: 3px solid purple;
-            padding: 13px;
-            margin-top: 20px;
-            transition: opacity 1s ease-in-out;
-        }
-
-      #originalBtn,
-#newBtn {
-    margin: 10px;
-    padding: 10px;
-    cursor: pointer;
-    display: inline-block;
-}
-
-        }
-
-        #thankYouMessage {
-            color: green;
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
             font-size: 16px;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        #expression-history {
-            width: 300px;
-            height: 150px;
-            resize: none;
+            cursor: pointer;
         }
     </style>
 </head>
-
 <body>
     <div id="password-container">
         <label for="password-input">Enter Password:</label>
@@ -90,130 +41,18 @@
         <button onclick="checkPassword()">Submit</button>
     </div>
 
-    <div id="animatedTextContainer" class="hidden">
-        <input type="text" id="inputField" oninput="checkInput(this.value)" placeholder="oh its you hello love<3">
-        <p id="animatedText" class="hidden"></p>
-    </div>
-
-    <div id="boxContainer" class="hidden">
-        <div id="secretBox">
-            <p>Is it really you?</p>
-            <input type="text" id="yesInput" oninput="checkYesInput(this.value)" placeholder="now say 'yeah whats up'">
-        </div>
-    </div>
-
-   <div id="buttonsContainer" class="hidden">
-    <button id="originalBtn" onclick="animateOriginal()">Original message</button>
-    <button id="newBtn" onclick="animateNew()">New message</button>
-</div>
-
-
     <script>
         function checkPassword() {
             const password = 'muffin';
             const enteredPassword = document.getElementById('password-input').value;
 
             if (enteredPassword === password) {
-                document.getElementById('password-container').style.display = 'none';
-                document.getElementById('animatedTextContainer').classList.remove('hidden');
-                document.getElementById('inputField').focus();
+                alert('Text me');
+                // You can add actions here for when the password is correct
             } else {
                 alert('Incorrect password. Please try again.');
             }
         }
-
-        function checkInput(value) {
-            const animatedText = document.getElementById('animatedText');
-            const boxContainer = document.getElementById('boxContainer');
-            const secretBox = document.getElementById('secretBox');
-
-            if (value.toLowerCase() === 'hello') {
-                document.getElementById('inputField').style.display = 'none';
-                animatedText.classList.remove('hidden');
-                boxContainer.classList.remove('hidden');
-                secretBox.style.display = 'block';
-            } else {
-                document.getElementById('inputField').style.display = 'block';
-                animatedText.classList.add('hidden');
-                boxContainer.classList.add('hidden');
-                secretBox.style.display = 'none';
-            }
-        }
-
-        function checkYesInput(value) {
-            const secretBox = document.getElementById('secretBox');
-            const yesInput = document.getElementById('yesInput');
-            const buttonsContainer = document.getElementById('buttonsContainer');
-
-            if (value.toLowerCase() === 'yeah whats up') {
-                secretBox.style.display = 'none';
-                buttonsContainer.classList.remove('hidden');
-            } else if (value.toLowerCase().includes('show me')) {
-                showExpressionHistory();
-                return;
-            }
-        }
-
-        function showExpressionHistory() {
-            const expressHistoryBox = document.getElementById('expressHistoryBox');
-            const secretBox = document.getElementById('secretBox');
-            const originalBtn = document.getElementById('originalBtn');
-            const newBtn = document.getElementById('newBtn');
-
-            secretBox.style.display = 'none';
-            expressHistoryBox.style.display = 'block';
-
-            const expressionHistory = localStorage.getItem('expressionHistory');
-            document.getElementById('expression-history').value = expressionHistory;
-
-            thankYouMessage.style.display = 'none';
-        }
-
-        function animateOriginal() {
-            const animatedText = document.getElementById('animatedText');
-            const originalBtn = document.getElementById('originalBtn');
-            const newBtn = document.getElementById('newBtn');
-            const words = ['Nothing much', 'But this is pretty cool right?', 'I hope so', 'I spent too much time', 'for you not to like it', 'it is kind of plain', 'and just text but yea', 'anywayy...', 'How have you been?',
-'You and your loved ones alright?', 'If yes I am glad', 'If no you can come and talk if you want', 'I made this simply because', 'it will be here forever', 'like fr', 'so whenever you feel bad', '(hopefully)',
-'this makes you feel better', 'And yeah..', 'to me, it does not sound like a good idea', 'and sometimes it does', 'but really it does not matter what I think', 'But see it will go on nearly forever', '...',
-'yeah no', 'that was a lie', 'it will not go on forever', 'it will continue as a loop', 'not very comforting', 'but this is all I can do yk?', 'I hope you stay to the very end', '',
-'I am not going through what I have written',
-'so I will be yapping', 'I uhh...', 'I forgot what I was saying earlier', 'oh yeah', 'so it will exist forever', 'Cool right?', '(I hope you think so T-T)', 'Hey nova', 'I also have this feeling that I need to share',
-'I truly admire you', 'bro like literally everything about you', 'you are my muse', 'And have been for an awfully long time', 'I cant stop this', 'I will stop...sorry', 'wow', 'ohhh I have an idea',
-'this came up just now', 'this will definitely be like "your zone"', 'so like you can always come back', 'and you are the only one that can access this', 'and me ofc', 'so I maybe', 'if I have the time',
-'(which I do have)', 'add new things once in a while', 'then whenever you check', 'there might be', 'something new..', 'I hope this isnt wasting your time', 'Now before I end this', 'I need to say 3 things:',
-'1. I love you', '2. I kiss you', '3. I miss you', 'like every second', 'mwah', 'mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah', 'mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah mwah ',
-'I hope that was enough kisses', 'And remember', 'As long as I live', '(even if I dont lmao)', 'there will always be one to love you', 'The end', 'from here on it will begin at the start again',
-'byeee...', 'you can leave now', 'there is nothing after', '...', 'what are you doing?,', 'okay..', 'no seriously.', 'leave.', '    ', '   ', '     ', '     ', '       ', '     ', '   ',
-'lmao I love you<3', ' ', ' ', 'Also...', 'BE MY VALENTINE', 'And that was not a question so', 'for the last time bye', 'dont forget to tell me what you think about this',
-'and tell me if I can make it better', 'okay?', 'bye bye', '       ', ' ', ' ', ' ', ' ', ' '];
-let index = 0;
-
-originalBtn.style.display = 'none';
-newBtn.style.display = 'none';
-
-setInterval(() => {
-    animatedText.innerHTML = words[index];
-    index = (index + 1) % words.length;
-}, 3500);
-}
-
-function animateNew() {
-const animatedText = document.getElementById('animatedText');
-const originalBtn = document.getElementById('originalBtn');
-const newBtn = document.getElementById('newBtn');
-const words = ['3/26','hey nova', 'I didnt want to like', 'be a nuisance', 'i...ummmm', 'i know by now that you like to be "silent"', 'but helloo??', 'anyway', 'yeah just didnt want to leave without saying goodbye', 'i reallyyyy hope you come back to texting me', 'i thought of that song', 'Should I stay or should I go?', 'by The Clash', 'when i saw that locket', 'idk', 'come on and let me know.', 'First I was just like', 'what is this girl on about', 'then yk i just dont think','that it is really my choice', 'dont get me wrong', 'I would love to stay', 'but this constant paranoia', 'that makes me doubt.', 'You know Nova?', 'I dont have a problem with talking', 'as long as you make me feel like you actually wanna talk yk', 'i did this here becuase you wont be able to respond', 'and that you can keep checking only if you want to', 'And i constantly feel the need to text you', '"hey nova wanna talk before we are completly through?"', 'but i know how that would end', 'Read at bla bla bla', 'or', 'Delivered', 'and that shit is not nice just so yk', 'ik it kinda makes no sence what i am saying','wtv.', 'I personally knew how it goes', 'and i just did not want to engage too much','i didnt want to call or show my face or other shit like that', 'i told you before', 'and you said that you knew where i was coming from', 'so i guess...', 'yeah', '"is u going or staying?"','you tell me I should stay','but i feel like you think', 'i should be going', ' ', 'and i dont know how to respond to that', ' ', ' ', 'but if you have a diffrent opinion', 'i am one text away','we did go through smth like this','for a long period of time before','i just dont think','that it is the same','Just one text','and i will respond','like i always have','like i always will','And if that is not in your plans','then','Bye Nova','Thats all i have to say','Thats all I CAN say','love ya','mwah',' ',' ',' ',' ',' '];
-let index = 0; 
-
-originalBtn.style.display = 'none';
-newBtn.style.display = 'none';
-
-setInterval(() => {
-    animatedText.innerHTML = words[index];
-    index = (index + 1) % words.length;
-}, 3500);
-}
-</script>
+    </script>
 </body>
 </html>
-
