@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +43,23 @@
         button:hover {
             background-color: #0056b3;
         }
+
+        #message {
+            font-size: 20px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 2s ease-in;
+        }
+
+        /* Animation for text */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .fadeIn {
+            animation: fadeIn 3s ease-in forwards;
+        }
     </style>
 </head>
 <body>
@@ -49,6 +67,7 @@
         <label for="password-input">Enter Password:</label>
         <input type="password" id="password-input" placeholder="Password">
         <button onclick="checkPassword()">Submit</button>
+        <div id="message"></div>
     </div>
 
     <script>
@@ -57,11 +76,16 @@
             const enteredPassword = document.getElementById('password-input').value;
 
             if (enteredPassword === password) {
-                alert('how bout you JUST TEXT ME???');
-                // You can add actions here for when the password is correct
+                showAnimatedMessage('how bout you JUST TEXT ME???');
             } else {
                 alert('Incorrect password. Please try again.');
             }
+        }
+
+        function showAnimatedMessage(message) {
+            const messageElement = document.getElementById('message');
+            messageElement.textContent = message;
+            messageElement.classList.add('fadeIn');
         }
     </script>
 </body>
