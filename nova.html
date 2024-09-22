@@ -46,7 +46,6 @@
         #message {
             font-size: 20px;
             font-weight: bold;
-            visibility: hidden;
         }
     </style>
 </head>
@@ -67,17 +66,39 @@
                 // Hide the password input and button
                 document.getElementById('password-container').innerHTML = '';
 
-                // Show the message immediately
-                showMessage('Now i now that you might check after i left','I am sorry','truly','I wiah you all the very best','I will pray for you every single day','I leave in the hands of Allah',' ',' ',' ',' ' );
+                // Show the messages in sequence
+                const messages = [
+                    'Now I know that you might check after I left',
+                    'I am sorry',
+                    'Truly',
+                    'I wish you all the very best',
+                    'I will pray for you every single day',
+                    'I leave you in the hands of Allah',
+                    ' ',
+                    ' ',
+                    ' ',
+                    ' '
+                ];
+                showMessages(messages);
             } else {
                 alert('Incorrect password. Please try again.');
             }
         }
 
-        function showMessage(message) {
+        function showMessages(messages) {
             const messageElement = document.getElementById('message');
-            messageElement.textContent = message;
-            messageElement.style.visibility = 'visible';
+            let index = 0;
+
+            // Display each message with a delay
+            function displayNextMessage() {
+                if (index < messages.length) {
+                    messageElement.textContent = messages[index];
+                    index++;
+                    setTimeout(displayNextMessage, 2000); // Adjust the delay time as needed (2000ms = 2s)
+                }
+            }
+
+            displayNextMessage();
         }
     </script>
 </body>
