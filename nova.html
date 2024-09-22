@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,18 +46,7 @@
         #message {
             font-size: 20px;
             font-weight: bold;
-            opacity: 0;
-            transition: opacity 2s ease-in;
-        }
-
-        /* Animation for text */
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        .fadeIn {
-            animation: fadeIn 3s ease-in forwards;
+            visibility: hidden;
         }
     </style>
 </head>
@@ -76,16 +64,20 @@
             const enteredPassword = document.getElementById('password-input').value;
 
             if (enteredPassword === password) {
-                showAnimatedMessage('how bout you JUST TEXT ME???');
+                // Hide the password input and button
+                document.getElementById('password-container').innerHTML = '';
+
+                // Show the message immediately
+                showMessage('Now i now that you might check after i left','I am sorry','truly','I wiah you all the very best','I will pray for you every single day','I leave in the hands of Allah',' ',' ',' ',' ' );
             } else {
                 alert('Incorrect password. Please try again.');
             }
         }
 
-        function showAnimatedMessage(message) {
+        function showMessage(message) {
             const messageElement = document.getElementById('message');
             messageElement.textContent = message;
-            messageElement.classList.add('fadeIn');
+            messageElement.style.visibility = 'visible';
         }
     </script>
 </body>
