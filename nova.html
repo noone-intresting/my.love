@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joti</title>
+    <title>Çkemi</title>
     <style>
         body {
             display: flex;
@@ -13,7 +13,7 @@
             margin: 0;
             background-color: white;
             font-family: 'Arial', sans-serif;
-            color: 'Purple'
+            color: purple;
         }
 
         #password-container {
@@ -70,22 +70,22 @@
                 // Hide the password input and button
                 document.getElementById('password-container').style.display = 'none';
 
-                // Add a delay before showing the first message (e.g., 5 seconds)
+                // Add a delay before showing the first message
                 setTimeout(() => {
                     const messages = [
-                        'Now I know that you might check after I left',
-                        'I am sorry',
-                        'Truly',
-                        'I wish you all the very best',
-                        'I will pray for you every single day',
-                        'I leave you in the hands of Allah',
+                        'Um okay',
                         ' ',
                         ' ',
+                        '',
                         ' ',
-                        ' '
+                        ' Weird',
+                        ' ',
+                        ' ',
+                        '',
+                        ' ',
                     ];
                     showMessages(messages);
-                }, 3000); // 5000ms = 5 seconds delay
+                }, 5000); // 5000ms = 5 seconds delay
             } else {
                 alert('Incorrect password. Please try again.');
             }
@@ -100,7 +100,7 @@
                 if (index < messages.length) {
                     messageElement.textContent = messages[index];
                     index++;
-                    setTimeout(displayNextMessage, 5000); // Adjust the delay between messages as needed (2000ms = 2s)
+                    setTimeout(displayNextMessage, 5000); // 5000ms = 5 seconds delay between messages
                 }
             }
 
